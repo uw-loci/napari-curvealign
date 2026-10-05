@@ -1,0 +1,10 @@
+name: napari-curvealign
+display_name: CurveAlign
+contributions:
+  commands:
+    - id: napari-curvealign.make_widget
+      python_name: napari_curvealign:napari_experimental_provide_dock_widget
+      title: Create CurveAlign Widget
+  widgets:
+    - command: napari-curvealign.make_widget
+      display_name: CurveAlign Widget

@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=77.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "napari-curvealign"
+version = "0.1.0.dev0"
+description = "napari plugin for CurveAlign. Quantification lives in tme-quant."
+authors = [{ name = "Eliceiri Lab" }]
+requires-python = ">=3.11"
+dependencies = [
+  "napari",
+  "pyqt6",
+  "qtpy",
+  "roifile",
+  # Temporary until the tme-quant split is on main. Then depend on
+  # uw-loci/tme-quant main (or a release) instead of this branch.
+  "tme-quant @ git+https://github.com/uw-loci/tme-quant.git@split-napari-curvealign",
+]
+
+[dependency-groups]
+dev = [
+  "pytest",
+  "ruff",
+]
+
+[project.entry-points."napari.manifest"]
+napari-curvealign = "napari_curvealign:napari.yaml"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false
+
+[tool.setuptools.package-data]
+napari_curvealign = ["napari.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
