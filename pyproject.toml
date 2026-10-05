@@ -32,12 +32,13 @@ segmentation = [
 napari-curvealign = "napari_curvealign:napari.yaml"
 
 [tool.setuptools]
-package-dir = { "" = "src" }
+package-dir = { "napari_curvealign" = "src" }
 include-package-data = true
-
-[tool.setuptools.packages.find]
-where = ["src"]
-namespaces = false
+packages = [
+  "napari_curvealign",
+  "napari_curvealign.imagej",
+  "napari_curvealign.widgets",
+]
 
 [tool.setuptools.package-data]
 napari_curvealign = ["napari.yaml"]

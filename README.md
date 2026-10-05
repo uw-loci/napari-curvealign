@@ -1,6 +1,6 @@
 ### napari-curvealign
 
-napari plugin for [CurveAlign](https://loci.wisc.edu/software/curvealign/). Curvelet quantification lives in [tme-quant](https://github.com/uw-loci/tme-quant) and is imported as `pycurvelets`. This repository is the interactive UI, including ROI segmentation (`napari_curvealign.segmentation`).
+napari plugin for [CurveAlign](https://loci.wisc.edu/software/curvealign/). Curvelet quantification lives in [tme-quant](https://github.com/uw-loci/tme-quant) and is imported as `pycurvelets`. This repository is only that UI. `src/` is the `napari_curvealign` package, including ROI segmentation.
 
 Cellpose and StarDist are optional:
 
