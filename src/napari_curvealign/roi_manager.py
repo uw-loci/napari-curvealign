@@ -54,20 +54,20 @@ except ImportError:
     binary_erosion = None
     disk = None
 
-# Local Boundary type for tme_quant compatibility (coordinates dict format)
+# Local Boundary type for pycurvelets compatibility (coordinates dict format)
 from typing import NamedTuple, Literal
 _BoundaryData = Union[np.ndarray, Any]
 
 class Boundary(NamedTuple):
-    """Boundary definition for relative angle measurements (tme_quant-compatible)."""
+    """Boundary definition for relative angle measurements (pycurvelets-compatible)."""
     kind: Literal["mask", "polygon", "polygons"]
     data: _BoundaryData
     spacing_xy: Optional[Tuple[float, float]] = None
 
 try:
-    from tme_quant.models import CurveletControlParameters, FeatureControlParameters
-    from tme_quant.get_ct import get_ct
-    from tme_quant.get_tif_boundary import get_tif_boundary
+    from pycurvelets.models import CurveletControlParameters, FeatureControlParameters
+    from pycurvelets.get_ct import get_ct
+    from pycurvelets.get_tif_boundary import get_tif_boundary
     HAS_PYCURVELETS = True
 except ImportError:
     HAS_PYCURVELETS = False

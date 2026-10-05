@@ -13,15 +13,19 @@ dependencies = [
   "pyqt6",
   "qtpy",
   "roifile",
-  # Temporary until the tme-quant split is on main. Then depend on
-  # uw-loci/tme-quant main (or a release) instead of this branch.
-  "tme-quant @ git+https://github.com/uw-loci/tme-quant.git@split-napari-curvealign",
+  "tme-quant @ git+https://github.com/uw-loci/tme-quant.git",
 ]
 
 [dependency-groups]
 dev = [
   "pytest",
   "ruff",
+]
+
+[project.optional-dependencies]
+segmentation = [
+  "cellcast",
+  "cellpose",
 ]
 
 [project.entry-points."napari.manifest"]

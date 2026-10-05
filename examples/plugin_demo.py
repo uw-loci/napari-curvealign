@@ -47,7 +47,7 @@ def main():
 
         traceback.print_exc()
         print("\nTroubleshooting:")
-        print("1. Install this package and tme-quant: uv sync")
+        print("1. Install editable package: uv pip install -e .")
         print("2. Check napari import/version.")
         print("3. Verify widget import: from napari_curvealign.widgets import CurveAlignWidget")
         sys.exit(1)

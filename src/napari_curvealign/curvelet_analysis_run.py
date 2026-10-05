@@ -1,8 +1,8 @@
 """
 Napari plugin pipeline for curvelet-based image analysis.
 
-The low-level FDCT and curvelet extraction live in :mod:`tme_quant.new_curv`
-(``new_curv()``). This module calls :func:`tme_quant.get_ct.get_ct`, which
+The low-level FDCT and curvelet extraction live in :mod:`pycurvelets.new_curv`
+(``new_curv()``). This module calls :func:`pycurvelets.get_ct.get_ct`, which
 invokes that implementation — there is no second ``new_curv`` in the napari
 package.
 """
@@ -19,13 +19,13 @@ from enum import Enum
 from typing import Tuple
 
 try:
-    from tme_quant.models import CurveletControlParameters, FeatureControlParameters
-    from tme_quant.get_ct import get_ct
-    from tme_quant.utils.visualization.draw_map import draw_map
+    from pycurvelets.models import CurveletControlParameters, FeatureControlParameters
+    from pycurvelets.get_ct import get_ct
+    from pycurvelets.utils.visualization.draw_map import draw_map
     HAS_PYCURVELETS = True
 except ImportError:
     HAS_PYCURVELETS = False
-    print("Warning: tme_quant not available. Using mock analysis.")
+    print("Warning: pycurvelets not available. Using mock analysis.")
 
 def _convert_features_to_dataframe(features: dict, stats: dict) -> pd.DataFrame:
     """Convert CurveAlign features and stats to a DataFrame for display."""
@@ -241,7 +241,7 @@ def run_analysis(
     # Load the image and normalize to 2D (RGB HE images are H×W×3, not a Z-stack)
     image_data = to_2d_grayscale_for_curvelets(imread(image_path))
 
-    # Use tme_quant analysis if available
+    # Use pycurvelets analysis if available
     if HAS_PYCURVELETS:
         try:
             curve_cp = CurveletControlParameters(
@@ -303,7 +303,7 @@ def run_analysis(
             return overlay_img, angle_map_processed, measurements
 
         except Exception as e:
-            print(f"tme_quant analysis failed: {e}")
+            print(f"pycurvelets analysis failed: {e}")
             import traceback
             traceback.print_exc()
             print("Falling back to mock analysis...")

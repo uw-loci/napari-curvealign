@@ -1129,7 +1129,7 @@ class CurveAlignWidget(QWidget):
         # Add install instructions
         install_label = QLabel(
             "<small>Note: Install segmentation dependencies with:<br>"
-            "<code>pip install 'tme-quant[segmentation]'</code></small>"
+            "<code>pip install -e '.[segmentation]'</code></small>"
         )
         install_label.setWordWrap(True)
         method_layout.addWidget(install_label)
