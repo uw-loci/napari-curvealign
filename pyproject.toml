@@ -13,7 +13,9 @@ dependencies = [
   "pyqt6",
   "qtpy",
   "roifile",
-  "tme-quant @ git+https://github.com/uw-loci/tme-quant.git",
+  # tme-quant is splitting into pycurvelets-core plus backend projects
+  # (uw-loci/tme-quant#74), after which its repo root is not installable.
+  "tme-quant @ git+https://github.com/uw-loci/tme-quant.git@v0.1.0-pre-split",
 ]
 
 [dependency-groups]
