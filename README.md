@@ -17,7 +17,7 @@ uv run napari
 
 Open **Plugins → napari-curvealign** (display name **CurveAlign**).
 
-tme-quant still registers its own copy of this plugin. After [PR 63](https://github.com/uw-loci/tme-quant/pull/63) and [PR 64](https://github.com/uw-loci/tme-quant/pull/64) are merged, a follow-up pull request in tme-quant can remove `src/napari_curvealign` and point here. Until that lands, installing both packages can show two CurveAlign widgets.
+tme-quant is pinned to the `v0.1.0-pre-split` tag, the last version whose repo root installs as one package. That version still registers its own copy of this plugin, so napari can show two CurveAlign widgets. [tme-quant#73](https://github.com/uw-loci/tme-quant/pull/73) removes that copy, and [tme-quant#74](https://github.com/uw-loci/tme-quant/pull/74) splits tme-quant into `pycurvelets-core` plus curvelet backend projects; once both are merged this dependency moves to `pycurvelets-core`.
 
 ### Tests
 
